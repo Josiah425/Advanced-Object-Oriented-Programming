@@ -1,0 +1,27 @@
+#ifndef MY_INT_HPP
+#define MY_INT_HPP
+
+
+
+#include <iostream>
+
+class MyInt {
+        friend std::ostream &operator<<(std::ostream &os, const MyInt &mi) {
+            return os << mi.i;
+        }
+    public:
+        MyInt() { count++; }
+        MyInt(const MyInt &mi) : i(mi.i) { count++; }
+        MyInt(int i) : i(i) { count++; }
+	bool operator==(const MyInt& other){
+		return other.i == this->i;
+	}
+    private:
+        int i;
+    public:
+        static std::size_t count;
+};
+
+
+
+#endif
